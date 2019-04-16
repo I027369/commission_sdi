@@ -7,6 +7,7 @@ This repository explain how to import SDI project in your local workspace and cr
 Follow these videos in case you are doing it for the first time. 
   
     https://www.youtube.com/watch?v=4anKSVRrHh0&t=379s
+    
     https://www.youtube.com/watch?v=8j6lD7lP5B0
     
     Similarly in the linux system setup the following in the DP Agent file adapater configuration
