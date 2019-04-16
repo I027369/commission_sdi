@@ -32,4 +32,32 @@ Follow these videos in case you are doing it for the first time.
 
 7. Download the MigrateParticipant.zip in any folder and keep it in a folder. 
 
-8. Log in the Web IDE. Import the 
+8. Log in the Web IDE. Select the "Workspace" in the Development area and right click to Import File or Project. Use the browse button to navigate to the place where you kept MigrateParticipant.zip and select it. Keep all the default and select "Ok"
+
+9. It should create a project in the Web IDE workspace. Right click on the project and go to "Project Setting". Select the space entry and save the the setting.
+
+10. Expand the project. Select "HDBParticipant" node. Right click on it and select "Modeling Action" -> "Add Externa SAP Hana Service"
+
+10. In the popup dialog box for "Add External SAP Hana Service" set User Provided Service Name as "ServiceParticipant" and provide rest of the information.
+
+11. Open the DB explorer and login to your tenant database. Open the SQL Console and execute following SQL statements
+
+GRANT SELECT, INSERT, UPDATE, DELETE  ON "EXT"."VT_CS_STAGEPARTICIPANT" TO MIGRATEPARTICIPANT_HDI_HDBPARTICIPANT_1#OO;
+
+GRANT SELECT, INSERT, UPDATE, DELETE  ON "EXT"."CS_STAGEPARTICIPANT" to MIGRATEPARTICIPANT_HDI_HDBPARTICIPANT_1#OO;
+
+GRANT SELECT, INSERT, UPDATE, DELETE  ON "TCMP"."CS_STAGEPARTICIPANT" to MIGRATEPARTICIPANT_HDI_HDBPARTICIPANT_1#OO;
+
+12. Now go back to the Web IDE project and expand the "HDBParticipant" node. Open "syn_participant.hdbsynonym" file by clicking on it. In the database column replace the name of the dabase from "SMF0001LAB" to your database name and save the file.
+
+13. Select the file "syn_participant.hdbsynonym" and just build this selected file. In case everything goes fine it will build the file else try to repeat the privious steps again.
+
+14. Select the flowgraph "VT_to_EXT_Participant.hdbflowgraph" and build the selected file. Similarly select the flowgraph "EXT_to_TCMP_Participant.hdbflowgraph" and build the selected file. If both the files are built successfully the project done. Congrats!
+
+15. Now open "VT_to_EXT_Participant.hdbflowgraph" and in the UI click the "Execute" command. Once the flowgraph is executed the data will be moved from virtual table EXT.VT_CS_STAGEPARTICIPANT to physical table EXT.CS_STAGEPARTICIPANT.
+
+16. Now open "EXT_to_TCMP_Participant.hdbflowgraph" and click on the "Execute" command. After the flowgraph execution is over the data will be moved from EXT.CS_STAGEPARTICIPANT table to TCMP.CS_STAGEPARTICIPANT table.
+
+This completes the migration of the data from remote data source to the TCMP table.
+
+Later we will see how to move the data from TCMP table to SAP Commission main table.
