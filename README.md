@@ -1,7 +1,9 @@
 # commission_sdi
 Web IDE project for data integration to SAP Commission using SDI
 
-This repository explain how to import SDI project in your local workspace and create a working data integration solution using SDI. Following are the steps:-
+This repository explain how to import SDI project in your local workspace and create a working data integration solution using SDI. Once all the steps completed successfully, you will be able to build a Web IDE project which moves the data from remote data source (in this example flat file) to physical table in EXT schema. Followed by moving the data from EXT schema to TCMP schema. In this example we use CS_STAGEPARTICIPANT. 
+
+Following are the steps:-
 
 1. Connenct the DP agent to the SDI server and enable the File Adapter
 Follow these videos in case you are doing it for the first time. 
